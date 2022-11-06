@@ -1,7 +1,7 @@
 ﻿namespace Article.Api.Repositories;
 public class ArticleRepository : List<Models.Article>, IArticleRepository
 {
-    private readonly static List<Models.Article> _articles = Populate();
+    private readonly static List<Models.Article> articles = Populate();
 
     private static List<Models.Article> Populate()
     {
@@ -35,19 +35,19 @@ public class ArticleRepository : List<Models.Article>, IArticleRepository
 
     public List<Models.Article> GetAll()
     {
-        return _articles;
+        return articles;
     }
 
     public Models.Article? Get(int id)
     {
-        return _articles.FirstOrDefault(x => x.Id == id);
+        return articles.FirstOrDefault(x => x.Id == id);
     }
 
     public int Delete(int id)
     {
-        var removed = _articles.SingleOrDefault(x => x.Id == id);
+        var removed = articles.SingleOrDefault(x => x.Id == id);
         if (removed != null)
-            _articles.Remove(removed);
+            articles.Remove(removed);
 
         return removed?.Id ?? 0;
     }

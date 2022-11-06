@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Article.Api.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Article.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ArticlesController
+public class ArticlesController : ControllerBase
 {
     private readonly IArticleRepository articleRepository;
     public ArticlesController(IArticleRepository articleRepository)
