@@ -1,0 +1,47 @@
+﻿namespace Writer.Api.Repositories;
+public class WriterRepository : List<Models.Writer>, IWriterRepository
+{
+    private readonly static List<Models.Writer> writers = Populate();
+
+    private static List<Models.Writer> Populate()
+    {
+        return new List<Models.Writer>
+            {
+                new Models.Writer
+                {
+                    Id = 1,
+                    Name = "Leanne Graham"
+                },
+                new Models.Writer
+                {
+                    Id = 2,
+                    Name = "Ervin Howell"
+                },
+                new Models.Writer
+                {
+                    Id = 3,
+                    Name = "Glenna Reichert"
+                }
+            };
+    }
+
+    public List<Models.Writer> GetAll()
+    {
+        return writers;
+    }
+
+    public Models.Writer Insert(Models.Writer writer)
+    {
+        var maxId = writers.Max(x => x.Id);
+
+        writer.Id = ++maxId;
+        writers.Add(writer);
+
+        return writer;
+    }
+
+    public Models.Writer? Get(int id)
+    {
+        return writers.FirstOrDefault(x => x.Id == id);
+    }
+}
