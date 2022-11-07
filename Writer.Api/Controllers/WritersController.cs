@@ -2,6 +2,9 @@
 using Writer.Api.Repositories;
 
 namespace Writer.Api.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
 public class WritersController : ControllerBase
 {
     private readonly IWriterRepository writerRepository;
